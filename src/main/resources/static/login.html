@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://unpkg.com/element-ui@2.0.5/lib/index.js"></script>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h3>--登录页面--</h3>
+	<!-- <form action='${pageContext.request.contextPath }/public/login' method='POST'>
+		<table>
+			<tr>
+				<td>User:</td>
+				<td><input type='text' name='v' value=''></td>
+			</tr>
+			<tr>
+				<td>Password:</td>
+				<td><input type='password' name='password' /></td>
+			</tr>
+			<tr>
+				<td colspan='2'><input name="submit" type="submit"
+					value="Login" /></td>
+			</tr>
+		</table>
+	</form> -->
+	
+	
+	
+	
+</body>
+<script type="text/javascript">
+	$.ajax({
+	    type: 'Post',
+	    url: '/public/login',
+	    data: {v:v}
+	});
+</script>
+</html>

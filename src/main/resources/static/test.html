@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+    <div></div>
+    <script>
+        $.post('/home/login', {v: 'aaa'}, function (data) {
+            // 请求成功执行的函数
+            console.log(data)
+        }).error(function (error) {
+            // 请求失败执行的函数
+            console.log(error)
+        })
+    </script>
+</body>
+</html>
