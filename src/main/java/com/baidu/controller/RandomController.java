@@ -1,6 +1,10 @@
 package com.baidu.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.actuate.metrics.CounterService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -10,6 +14,10 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class RandomController {
+	private Logger logger = LoggerFactory.getLogger(RandomController.class);
+	@Autowired
+	private CounterService counterService;
+	
 	@Value("${blog.value}")
 	private String randomStr;
 	@Value("${blog.num}")
@@ -23,10 +31,13 @@ public class RandomController {
 
 	@RequestMapping("/random")
 	public void random() {
+		counterService.increment("random.count");
 		System.out.println(randomStr);
 		System.out.println(randomInt);
 		System.out.println(randomLong);
 		System.out.println(randomWith10);
 		System.out.println(randomRange1020);
+		
+		logger.info("{} - Heartbeat status: {}", randomInt, randomLong);
 	}
 }
