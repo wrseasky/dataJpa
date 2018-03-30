@@ -1,4 +1,4 @@
-package com.baidu.distributedTrans;
+package com.baidu.distributedTrans.redis;
 
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;

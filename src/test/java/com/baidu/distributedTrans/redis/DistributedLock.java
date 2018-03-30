@@ -1,4 +1,4 @@
-package com.baidu.distributedTrans;
+package com.baidu.distributedTrans.redis;
 
 import java.util.List;
 import java.util.UUID;

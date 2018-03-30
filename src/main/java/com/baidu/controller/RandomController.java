@@ -17,7 +17,7 @@ public class RandomController {
 	private Logger logger = LoggerFactory.getLogger(RandomController.class);
 	@Autowired
 	private CounterService counterService;
-	
+
 	@Value("${blog.value}")
 	private String randomStr;
 	@Value("${blog.num}")
@@ -37,7 +37,8 @@ public class RandomController {
 		System.out.println(randomLong);
 		System.out.println(randomWith10);
 		System.out.println(randomRange1020);
-		
+
 		logger.info("{} - Heartbeat status: {}", randomInt, randomLong);
 	}
+
 }

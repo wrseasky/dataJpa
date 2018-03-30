@@ -14,6 +14,5 @@ public class Z {
 			logger.debug("`11111111111111");
 		}
 		System.out.println(new Date().getTime());
-		
 	}
 }

@@ -4,6 +4,7 @@ import static com.google.common.collect.Maps.newHashMap;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -152,5 +153,18 @@ public class ImmutableCollections {
 		ImmutableList<Integer> listt = FluentIterable.from(names).filter(predicate).transform(function1).toList();
 
 	}
-
+	public static void main(String[] args) {
+		
+		File file = new File("D:\\ideaworkspace\\dataJpa\\src\\main\\resources\\application-dev.properties");
+		
+		List<String> lines = null;
+		try {
+			lines = Files.readLines(file, Charsets.UTF_8);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		for (String string : lines) {
+			System.out.println(string);
+		}
+	}
 }

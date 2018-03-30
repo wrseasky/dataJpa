@@ -1,4 +1,4 @@
-package com.baidu.distributedTrans;
+package com.baidu.distributedTrans.redis;
 
 /**
  * @author 作者 wr:
