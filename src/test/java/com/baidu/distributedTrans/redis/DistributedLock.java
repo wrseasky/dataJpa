@@ -96,6 +96,7 @@ public class DistributedLock {
 			conn = jedisPool.getResource();
 			while (true) {
 				// 监视lock，准备开始事务
+				//一般是和事务一起使用，当对某个key进行watch后如果其他的客户端对这个key进行了更改，那么本次事务会被取消，事务的exec会返回null。jedis.watch(key)都会返回OK
 				conn.watch(lockKey);
 				// 通过前面返回的value值判断是不是该锁，若是该锁，则删除，释放锁
 				if (identifier.equals(conn.get(lockKey))) {

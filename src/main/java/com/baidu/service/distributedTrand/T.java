@@ -1,12 +1,7 @@
 package com.baidu.service.distributedTrand;
 
-import java.io.IOException;
-import java.util.List;
-
-import org.apache.zookeeper.CreateMode;
 import org.apache.zookeeper.WatchedEvent;
 import org.apache.zookeeper.Watcher;
-import org.apache.zookeeper.ZooDefs;
 import org.apache.zookeeper.ZooKeeper;
 import org.apache.zookeeper.data.Stat;
 
@@ -20,7 +15,7 @@ public class T {
 
 			@Override
 			public void process(WatchedEvent event) {
-
+				
 			}
 
 		});
@@ -28,6 +23,5 @@ public class T {
 
 		Stat stat = zk.exists("/t", true);
 		System.out.println(stat);
-
 	}
 }

@@ -92,9 +92,10 @@ public class ZooDistributeLock implements Lock, Watcher {
 			}
 			// 创建临时有序节点
 			CURRENT_LOCK = zk.create(ROOT_LOCK + "/" + lockName + splitStr, new byte[0], ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL_SEQUENTIAL);
-			System.out.println(CURRENT_LOCK + " 已经创建");
+			System.out.println(Thread.currentThread().getName() + "   " + CURRENT_LOCK + " 已经创建");
 			// 取所有子节点
 			List<String> subNodes = zk.getChildren(ROOT_LOCK, false);
+			System.out.println(Thread.currentThread().getName() + "=======================================================" + subNodes.size());
 			// 取出所有lockName的锁
 			List<String> lockObjects = new ArrayList<String>();
 			for (String node : subNodes) {

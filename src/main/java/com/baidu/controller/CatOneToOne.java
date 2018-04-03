@@ -20,6 +20,11 @@ public class CatOneToOne {
 	@Autowired
 	private IDCardRepository iDCardRepository;
 	
+	@RequestMapping("/hel")
+	public String get(){
+		return "hello";
+	}
+	
 	@RequestMapping("/one")
 	public Object tttttttttttt() {
 

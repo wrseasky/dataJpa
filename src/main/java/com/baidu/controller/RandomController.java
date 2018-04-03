@@ -1,5 +1,8 @@
 package com.baidu.controller;
 
+import org.apache.commons.lang3.RandomStringUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.log4j.MDC;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +10,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.actuate.metrics.CounterService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.apache.commons.text.RandomStringGenerator;
 
 /**
  * @author 作者 wr:
@@ -14,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class RandomController {
-	private Logger logger = LoggerFactory.getLogger(RandomController.class);
+
 	@Autowired
 	private CounterService counterService;
 
@@ -31,14 +35,53 @@ public class RandomController {
 
 	@RequestMapping("/random")
 	public void random() {
+		/**
+		 * 统计被调用次数
+		 */
 		counterService.increment("random.count");
+		
 		System.out.println(randomStr);
 		System.out.println(randomInt);
 		System.out.println(randomLong);
 		System.out.println(randomWith10);
 		System.out.println(randomRange1020);
+		
+	}
+	
+	@RequestMapping("string")
+	public void createRandomString(){
+		/**
+		 * 方法过时
+		 */
+		String tracingId = RandomStringUtils.randomAlphanumeric(12);
+		
+		/**
+		 * 使用20个字母a-z随机字符串
+		 */
+        RandomStringGenerator generator1 = new RandomStringGenerator.Builder().withinRange('a', 'z').build();
+        String randomLetters = generator1.generate(20);
+        /**
+         * 共20个字符,中文在中间     ======随机字母字符串=======
+         */
+        System.out.println(StringUtils.center("随机字母字符串",20, "="));
+        System.out.println(randomLetters);
 
-		logger.info("{} - Heartbeat status: {}", randomInt, randomLong);
+        /**
+         * 使用数字0-9的随机字符串
+         */
+        RandomStringGenerator generator2 = new RandomStringGenerator.Builder().withinRange('0', '9').build();
+        String randomNumbers = generator2.generate(20);
+        System.out.println(StringUtils.center("随机数字字符串",20, "="));
+        System.out.println(randomNumbers);
+
+        
+        /**
+         * 使用码位为0到z的随机字符串       
+         */
+        RandomStringGenerator generator3 = new RandomStringGenerator.Builder().withinRange('0', 'z').build();
+        String random = generator3.generate(20);
+        System.out.println(StringUtils.center("随机混合字符串",20, "="));
+        System.out.println(random);
 	}
 
 }
