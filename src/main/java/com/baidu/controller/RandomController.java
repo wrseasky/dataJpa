@@ -34,7 +34,7 @@ public class RandomController {
 	private int randomRange1020;
 
 	@RequestMapping("/random")
-	public void random() {
+	public String random() {
 		/**
 		 * 统计被调用次数
 		 */
@@ -45,7 +45,7 @@ public class RandomController {
 		System.out.println(randomLong);
 		System.out.println(randomWith10);
 		System.out.println(randomRange1020);
-		
+		return "OK!";
 	}
 	
 	@RequestMapping("string")
